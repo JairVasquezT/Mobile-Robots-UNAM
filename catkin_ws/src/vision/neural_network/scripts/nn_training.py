@@ -196,7 +196,7 @@ def main():
                 desaciertos = 0
                 
                     
-                #Realizar 100 iteraciones
+                #100 iteraciones
                 for i in range (100):
                 #    while cmd != 27 and not rospy.is_shutdown():
                     img,label = testing_dataset[numpy.random.randint(0, 4999)]
