@@ -198,7 +198,7 @@ def main():
                     
                 #100 iteraciones
                 for i in range (100):
-                #    while cmd != 27 and not rospy.is_shutdown():
+                #   while cmd != 27 and not rospy.is_shutdown():
                     img,label = testing_dataset[numpy.random.randint(0, 4999)]
                     y = nn.feedforward(img).transpose()
                     print("\nPerceptron output: " + str(y))
