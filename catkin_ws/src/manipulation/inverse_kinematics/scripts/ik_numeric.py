@@ -20,7 +20,7 @@ from manip_msgs.srv import *
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 
 prompt = ""
-NAME = "JAIR_VASQUEZ_TORRES"
+NAME = "JAIR_VASQUEZ"
    
 def forward_kinematics(q, T, W):
     x,y,z,R,P,Y = 0,0,0,0,0,0
@@ -48,12 +48,11 @@ def forward_kinematics(q, T, W):
     H = tft.identity_matrix()
     for i in range(len(q)):
         Ri = tft.rotation_matrix(q[i], W[i])
-        H = tft.concatenate_matrices(H,T[i],Ri)
-    H = tft.concatenate_matrices(H, T[i])
-    x,y,z = H[0,3], H[1,3], H[2,3]
-    R,P,Y = list(tft.euler_from_matrix(H))
+        H = tft.concatenate_matrices(H, T[i], Ri)
+    H = tft.concatenate_matrices(H, T[7])
+    x, y, z = H[0,3], H[1,3], H[2,3]
+    R, P, Y = list(tft.euler_from_matrix(H))
     return numpy.asarray([x,y,z,R,P,Y])
-
 
 def jacobian(q, T, W):
     delta_q = 0.000001
@@ -80,11 +79,10 @@ def jacobian(q, T, W):
     #     RETURN J
     #
     J = numpy.asarray([[0.0 for a in q] for i in range(6)])
-    qn = numpy.asarray( [q,]*len(q) ) + delta_q*numpy.identity(len(q))
-    qp = numpy.asarray( [q,]*len(q) ) - delta_q*numpy.identity(len(q))
+    qn = numpy.asarray([q,]*len(q)) + delta_q*numpy.identity(len(q))  #q_next
+    qp = numpy.asarray([q,]*len(q)) - delta_q*numpy.identity(len(q))  #q_prev
     for i in range(len(q)):
-        J[:,i] = (forward_kinematics(qn[i],T, W) - forward_kinematics(qp[i], T,W)) / (delta_q*2.0)
-    
+        J[:,i] = (forward_kinematics(qn[i], T, W) - forward_kinematics(qp[i], T, W))/delta_q/2
     return J
 
 def inverse_kinematics(x, y, z, roll, pitch, yaw, T, W, init_guess=numpy.zeros(7), max_iter=20):
@@ -120,13 +118,13 @@ def inverse_kinematics(x, y, z, roll, pitch, yaw, T, W, init_guess=numpy.zeros(7
     iterations = 0
     while numpy.linalg.norm(e) > tol and iterations < max_iter:
         J = jacobian(q, T, W)
-        q = (q -  numpy.dot(numpy.linalg.pinv(J),e) + math.pi)%(2*math.pi) - math.pi
+        q = (q - numpy.dot(numpy.linalg.pinv(J), e) + math.pi)%(2*math.pi) - math.pi
         p = forward_kinematics(q, T, W)
-        e = p - pd
+        e = p -pd
         e[3:6] = (e[3:6] + math.pi)%(2*math.pi) - math.pi
         iterations += 1
+
     success = iterations < max_iter and angles_in_joint_limits(q)
-    
     
     return success, q
    
@@ -255,5 +253,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
