@@ -62,6 +62,7 @@ Gazebo Simulation:
 ![gazebo](https://github.com/mnegretev/Mobile-Robots-2024-2/blob/main/Media/gazebo.png)
 
 GUI:
+
 ![GUIExample](https://github.com/mnegretev/Mobile-Robots-2024-2/blob/main/Media/gui.png)
 
 
