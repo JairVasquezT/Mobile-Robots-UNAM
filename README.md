@@ -55,10 +55,12 @@ To verify the installation and compilation:
 * $ roslaunch surge_et_ambula movement_planning.launch
 
 If correctly installed, you should see the following visualizers:
+
 RViz Visualizer:
 ![rviz](https://github.com/mnegretev/Mobile-Robots-2024-2/blob/main/Media/rviz.png)
 
 Gazebo Simulation:
+
 ![gazebo](https://github.com/mnegretev/Mobile-Robots-2024-2/blob/main/Media/gazebo.png)
 
 GUI:
