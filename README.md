@@ -1,41 +1,41 @@
 # Mobile Robotics Portfolio - Jair Vásquez Torres
 
-Este repositorio contiene mi trabajo desarrollado en el curso "Robots Móviles" durante mi estancia en la UNAM (2024-2). He implementado módulos clave de autonomía, desde la planeación de rutas hasta la manipulación robótica.
+This repository contains the work developed during my "Mobile Robots" course at UNAM (2024-2). I have implemented key autonomy modules, ranging from path planning and probabilistic localization to robotic manipulation and neural networks.
 
-## 🛠 Contribuciones Técnicas Destacadas
+## 🛠 Key Technical Contributions
 
-A continuación, resumo los algoritmos y sistemas que implementé y sintonicé exitosamente:
+The following algorithms and systems were successfully implemented, tuned, and tested:
 
-### 1. Planeación y Navegación Autónoma
-* **Algoritmos de Ruta:** Implementación de **A*** (basado en grafos) y **RRT** (árboles aleatorios) para navegación global.
-* **Suavizado de Rutas:** Optimización de trayectorias mediante algoritmos de descenso de gradiente para obtener curvas ejecutables por la base.
-* **Seguimiento de Rutas:** Implementación de leyes de control de velocidad lineal y angular ($v, \omega$) para seguimiento preciso de trayectorias.
-* **Campos Potenciales:** Desarrollo de métodos reactivos de evasión de obstáculos mediante fuerzas atractivas y repulsivas en tiempo real.
-
-
-
-### 2. Localización y Percepción
-* **Filtro de Partículas (Monte Carlo):** Implementación en C++ de la generación, movimiento y remuestreo de partículas para localización probabilística con LIDAR.
-* **Filtro de Kalman Extendido (EKF):** Modelado matemático y cálculo de Jacobianos para la fusión de sensores.
-* **Redes Neuronales:** Programación de algoritmos de **Backpropagation** desde cero para clasificación de patrones.
-* **Representación del Entorno:** Generación de mapas de costo inflados y Diagramas de Voronoi (GVD) para navegación segura.
+### 1. Autonomous Navigation & Path Planning
+* **Pathfinding Algorithms:** Implementation of **A*** (Graph-based) and **RRT** (Rapidly-exploring Random Trees) for global navigation.
+* **Path Smoothing:** Trajectory optimization using gradient descent algorithms to generate executable curves for the mobile base.
+* **Path Following:** Implementation of control laws for linear and angular velocity ($v, \omega$) to ensure precise trajectory tracking.
+* **Potential Fields:** Development of reactive obstacle avoidance methods using real-time attractive and repulsive forces.
 
 
 
-### 3. Proyecto Integrador: Robot de Servicio
-Desarrollo de una máquina de estados para un robot móvil con manipulador:
-* **HRI:** Integración de comandos por voz para tareas de búsqueda y transporte.
-* **Manipulación:** Implementación de cinemática inversa para el agarre de objetos (Pringles, manzana).
-* **Análisis de Robustez:** Evaluación experimental del sistema, identificando áreas de mejora en la precisión final del posicionamiento y la tasa de éxito del reconocimiento de voz (60%).
+### 2. Localization & Perception
+* **Particle Filter (Monte Carlo):** C++ implementation of particle generation, motion update, and importance resampling for probabilistic localization using LIDAR data.
+* **Extended Kalman Filter (EKF):** Mathematical modeling and Jacobian calculations for sensor fusion and state estimation.
+* **Neural Networks:** From-scratch programming of **Backpropagation** algorithms for pattern classification.
+* **Environment Representation:** Generation of inflated cost maps and Generalized Voronoi Diagrams (GVD) for safe navigation.
 
-## Requerimientos
 
-* Ubuntu 20.04 https://releases.ubuntu.com/focal/ubuntu-20.04.6-desktop-amd64.iso
-* ROS Noetic http://wiki.ros.org/noetic/Installation/Ubuntu
 
-## Instalación
+### 3. Integrated Project: Service Robot
+Development of a Finite State Machine (FSM) for a mobile manipulator:
+* **HRI:** Integration of voice commands for "Search and Carry" tasks.
+* **Manipulation:** Implementation of inverse kinematics for grasping specific objects (e.g., Pringles can, apple).
+* **Robustness Analysis:** Experimental system evaluation, identifying areas for improvement in final positioning precision and voice recognition success rate (60% accuracy).
 
-Nota: se asume que ya se tiene instalado Ubuntu y ROS.
+---
+
+## Requirements
+* Ubuntu 20.04 (Focal Fossa)
+* ROS Noetic
+
+## Installation
+*Note: It is assumed that Ubuntu and ROS are already installed.*
 
 * $ cd
 * $ git clone https://github.com/mnegretev/Mobile-Robots-2024-2
@@ -46,27 +46,28 @@ Nota: se asume que ya se tiene instalado Ubuntu y ROS.
 * $ echo "source ~/Mobile-Robots-2024-2/catkin_ws/devel/setup.bash" >> ~/.bashrc
 * $ source ~/.bashrc
 
-## Pruebas
+## Testing
 
-Para probar que todo se instaló y compiló correctamente:
+To verify the installation and compilation:
 
 * $ cd 
 * $ source Mobile-Robots-2024-2/catkin_ws/devel/setup.bash
 * $ roslaunch surge_et_ambula movement_planning.launch
 
-Si todo se instaló y compiló correctamente, se debería ver un visualizador como el siguiente:
+If correctly installed, you should see the following visualizers:
+RViz Visualizer:
 ![rviz](https://github.com/mnegretev/Mobile-Robots-2024-2/blob/main/Media/rviz.png)
 
-Un ambiente simulado como el siguiente:
+Gazebo Simulation:
 ![gazebo](https://github.com/mnegretev/Mobile-Robots-2024-2/blob/main/Media/gazebo.png)
 
-Y una GUI como la siguiente:
+GUI:
 ![GUIExample](https://github.com/mnegretev/Mobile-Robots-2024-2/blob/main/Media/gui.png)
 
 
-## Contacto
+## Contact
 Dr. Marco Negrete<br>
-Profesor Asociado C<br>
-Departamento de Procesamiento de Señales<br>
-Facultad de Ingeniería, UNAM <br>
+Associate Professor C<br>
+Signal Processing Department<br>
+Faculty of Engineering, UNAM <br>
 marco.negrete@ingenieria.unam.edu<br>
