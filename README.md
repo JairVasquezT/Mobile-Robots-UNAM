@@ -1,4 +1,4 @@
-# Mobile Robotics Portfolio - Jair Vásquez Torres
+# Mobile Robotics Portfolio - Jair Vasquez Torres
 
 This repository contains the work developed during my "Mobile Robots" course at UNAM (2024-2). I have implemented key autonomy modules, ranging from path planning and probabilistic localization to robotic manipulation and neural networks.
 
